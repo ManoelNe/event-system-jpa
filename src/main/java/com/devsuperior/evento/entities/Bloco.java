@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
@@ -68,5 +69,17 @@ public class Bloco {
 
     public Atividade getAtividade() {
         return atividade;
+    }
+
+    @Override
+    public final boolean equals(Object o) {
+        if (!(o instanceof Bloco bloco)) return false;
+
+        return Objects.equals(id, bloco.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
